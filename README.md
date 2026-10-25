@@ -59,11 +59,13 @@ npm run check                         # typecheck + tests (runs inside workerd w
 
 ## Deploying
 
-1. `npx wrangler d1 create grantfirefight`, then copy the `database_id` into `wrangler.jsonc`.
-2. `npm run db:migrate:remote`
-3. `npx wrangler secret put ANTHROPIC_API_KEY`
-4. `npm run deploy`
-5. In Cloudflare Zero Trust, add a self-hosted Access application for the Worker's hostname, with a One-time PIN login method and a policy allowing the people who should sign in. Set `ACCESS_TEAM_DOMAIN` (for example `yourteam.cloudflareaccess.com`) and `ACCESS_AUD` (the application's AUD tag) in `wrangler.jsonc` and deploy again. Until both are set, every request gets the sign-in page.
+The repo is connected to Cloudflare Workers Builds: a push to the production branch (set under the Worker's **Settings → Build**) runs `npm ci` and `npx wrangler deploy` on Cloudflare. The production D1 database already exists and is migrated.
+
+- **Schema changes:** add a migration, then run `npm run db:migrate:remote` before pushing the code that needs it. Builds don't migrate.
+- **Anthropic key:** add `ANTHROPIC_API_KEY` as a secret under the Worker's **Settings → Variables and Secrets**.
+- **Sign-in:** turn on Cloudflare Access for the Worker's hostname with a One-time PIN login method and a policy allowing the people who should sign in. Set `ACCESS_TEAM_DOMAIN` (for example `yourteam.cloudflareaccess.com`) and `ACCESS_AUD` (the Access application's AUD tag) in `wrangler.jsonc` and push. Until both are set, every request gets the sign-in page.
+
+To deploy by hand instead: `npm run deploy` with `CLOUDFLARE_API_TOKEN` set.
 
 To flag drafts that lean on a circulating template, load it into the guard. Only hashes are stored.
 
