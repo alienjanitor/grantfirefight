@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "grantfirefight",
+  "account_id": "46f1eb7732c8b5105b494310ed3fae25",
   "main": "src/index.tsx",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
@@ -12,8 +13,7 @@
     {
       "binding": "DB",
       "database_name": "grantfirefight",
-      // Replace with the id printed by `npx wrangler d1 create grantfirefight` before deploying.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "ba2b26bd-1adf-4b95-945c-9bd2d61c4ed4",
       "migrations_dir": "migrations"
     }
   ],
