@@ -1,0 +1,9 @@
+# Copy to .dev.vars for `npm run dev`. Never commit .dev.vars.
+
+# Claude API key for the interview coach and criteria checker.
+# The app still runs without it; AI features show a "not configured" notice.
+ANTHROPIC_API_KEY=
+
+# Local-only login bypass. Honored only when the request host is localhost or
+# 127.0.0.1, so it cannot open up a deployed Worker.
+DEV_AUTH_EMAIL=chief@example.org

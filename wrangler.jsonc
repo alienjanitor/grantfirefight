@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "grantfirefight",
+  "main": "src/index.tsx",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "grantfirefight",
+      // Replace with the id printed by `npx wrangler d1 create grantfirefight` before deploying.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Workers AI, used only for speech-to-text in voice interviews.
+  "ai": {
+    "binding": "AI",
+    "remote": true
+  },
+  "vars": {
+    "CLAUDE_MODEL": "claude-opus-5-5",
+    // Cloudflare Access team domain, e.g. "yourteam.cloudflareaccess.com", and the
+    // application's AUD tag. Both are required in production; see README.
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": ""
+  },
+  "observability": {
+    "enabled": true
+  }
+}
