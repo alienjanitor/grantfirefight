@@ -24,10 +24,10 @@
   },
   "vars": {
     "CLAUDE_MODEL": "claude-opus-5-5",
-    // Cloudflare Access team domain, e.g. "yourteam.cloudflareaccess.com", and the
-    // application's AUD tag. Both are required in production; see README.
-    "ACCESS_TEAM_DOMAIN": "",
-    "ACCESS_AUD": ""
+    // Cloudflare Access team domain and the Worker's Access application AUD tag
+    // (Worker → Access → Application values). Neither is secret.
+    "ACCESS_TEAM_DOMAIN": "noisy-breeze-6b76.cloudflareaccess.com",
+    "ACCESS_AUD": "21a866ff2442d42344fbac3d16905f9eda3aac7640dad5391e290c726351a327"
   },
   "observability": {
     "enabled": true
